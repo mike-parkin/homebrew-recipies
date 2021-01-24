@@ -38,7 +38,7 @@ router.get('/yeast-list', (req, res) => {
 
 
 router.get('/recipes/:id', (req, res) => {
-  db.getRecipe(req.params.id)
+  db.getRecipeGrains(req.params.id)
     .then(recipe => {
       console.log(recipe[0])
       res.render('recipe', recipe[0])
