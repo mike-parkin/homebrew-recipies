@@ -53,9 +53,9 @@ function getRecipeHops(recipe, db = connection) {
     .then(beers => {
       return Promise.all(beers.map(beer => {
         return db('hops')
-          .join('beers_hops', 'beers_hops.hops.id', 'hops.id')
+          .join('beers_hops', 'beers_hops.hop_id', 'hops.id')
           .where('beers_hops.beer_id', beer.id)
-          .select('hops.*', 'beers_hops.amount', 'beers.hops.time')
+          .select('hops.*', 'beers_hops.total_amount', 'beers_hops.instructions')
           .then(hops => {
             recipe[0].hops = hops
             return recipe

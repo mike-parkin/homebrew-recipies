@@ -37,13 +37,23 @@ router.get('/yeast-list', (req, res) => {
 })
 
 
+// router.get('/recipes/:id', (req, res) => {
+//   db.getRecipeGrains(req.params.id)
+//     .then(recipe => {
+//       console.log(recipe[0])
+//       res.render('recipe', recipe[0])
+//     })
+// })
+
 router.get('/recipes/:id', (req, res) => {
   db.getRecipeGrains(req.params.id)
     .then(recipe => {
-      console.log(recipe[0])
-      res.render('recipe', recipe[0])
+      db.getRecipeHops(recipe)
+        .then(recipe => {
+          console.log(recipe[0][0])
+          res.render('recipe', recipe[0][0])
+        })
     })
 })
-
 
 module.exports = router

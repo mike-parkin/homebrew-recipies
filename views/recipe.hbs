@@ -1,9 +1,18 @@
 <h1>HOLA!!!</h1>
 
 <h1>{{name}}</h1>
-<h2>grains/fermentables</h2>
+<h3>Grains/Fermentables</h3>
 <ul>
     {{#each grains}}
     <li>{{amount}}kg {{name}}</li>
+    {{/each}}
+</ul>
+<h3>Hops</h3>
+<ul>
+    {{#each hops}}
+    <li>
+        <p>{{name}} - {{total_amount}}g</p>
+        <p>additions: {{instructions}}</p>
+    </li>
     {{/each}}
 </ul>
