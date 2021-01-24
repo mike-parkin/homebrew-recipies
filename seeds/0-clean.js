@@ -5,6 +5,7 @@ exports.seed = function (knex, Promise) {
     .then(() => empty('grains'))
     .then(() => empty('hops'))
     .then(() => empty('yeasts'))
+    .then(() => empty('beers_grains'))
   // Chain calls to empty in
   // order as required, e.g.:
   // .then(empty('profiles'))
