@@ -3,19 +3,24 @@ const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
-  getUser: getUser,
-  getUsers: getUsers,
-  getBeers: getBeers
-}
-
-function getUsers (db = connection) {
-  return db('users').select()
-}
-
-function getUser (id, db = connection) {
-  return db('users').where('id', id).first()
+  getBeers: getBeers,
+  getGains: getGains,
+  getHops: getHops,
+  getYeasts: getYeasts
 }
 
 function getBeers(db = connection) {
   return db('beers').select()
+}
+
+function getGains(db = connection) {
+  return db('grains').select()
+}
+
+function getHops(db = connection) {
+  return db('hops').select()
+}
+
+function getYeasts(db = connection) {
+  return db('yeasts').select()
 }

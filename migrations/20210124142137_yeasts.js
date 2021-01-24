@@ -1,10 +1,10 @@
 
 exports.up = function(knex) {
-  return knex.schema,createTable('yeasts', table => {
+  return knex.schema.createTable('yeasts', table => {
     table.increments('id').primary()
-    table.string('producer')
+    table.string('brand')
     table.string('name')
-    table.string('strain')
+    table.string('type')
   })
 };
 

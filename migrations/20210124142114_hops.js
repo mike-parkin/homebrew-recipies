@@ -1,9 +1,9 @@
 
 exports.up = function(knex) {
-    return knex.schema,createTable('hops', table => {
+    return knex.schema.createTable('hops', table => {
         table.increments('id').primary()
         table.string('name')
-        table.sting('country')
+        table.string('country')
     })
 };
 
