@@ -17,4 +17,6 @@
     {{/each}}
 </ul>
 <h3>Yeast</h3>
-<p>{{yeast.brand}} {{yeast.name}}</p>
+{{#each yeast}}
+    <p>{{brand}} {{name}}</p>
+{{/each}}

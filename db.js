@@ -8,7 +8,8 @@ module.exports = {
   getHops: getHops,
   getYeasts: getYeasts,
   getRecipeGrains: getRecipeGrains,
-  getRecipeHops: getRecipeHops
+  getRecipeHops: getRecipeHops,
+  getRecipeYeasts: getRecipeYeasts
 }
 
 function getBeers(db = connection) {
@@ -58,6 +59,23 @@ function getRecipeHops(recipe, db = connection) {
           .select('hops.*', 'beers_hops.total_amount', 'beers_hops.instructions')
           .then(hops => {
             recipe[0].hops = hops
+            return recipe
+          })
+      }))
+    })
+}
+
+function getRecipeYeasts(recipe, db = connection) {
+  return db('beers').select()
+    .where('id', recipe[0].id)
+    .then(beers => {
+      return Promise.all(beers.map(beer => {
+        return db('yeasts')
+          .join('beers_yeasts', 'beers_yeasts.yeast_id', 'yeasts.id')
+          .where('beers_yeasts.beer_id', beer.id)
+          .select('yeasts.*', 'beers_yeasts.amount')
+          .then(yeast => {
+            recipe[0].yeast = yeast
             return recipe
           })
       }))

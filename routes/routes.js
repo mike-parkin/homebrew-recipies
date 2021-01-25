@@ -50,8 +50,11 @@ router.get('/recipes/:id', (req, res) => {
     .then(recipe => {
       db.getRecipeHops(recipe)
         .then(recipe => {
-          console.log(recipe[0][0])
-          res.render('recipe', recipe[0][0])
+          db.getRecipeYeasts(recipe[0])
+            .then(recipe => {
+              console.log(recipe[0][0])
+              res.render('recipe', recipe[0][0])
+            })
         })
     })
 })
