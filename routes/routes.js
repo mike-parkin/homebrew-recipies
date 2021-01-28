@@ -59,4 +59,17 @@ router.get('/recipes/:id', (req, res) => {
     })
 })
 
+router.get('/new-beer', (req, res) => {
+  res.render('new-beer')
+})
+
+router.post('/new-beer', (req, res) => {
+  db.newBeer(req.body)
+    .then(result => {
+      db.getNewBeer()
+      res.rendirect('')
+    })
+})
+
+
 module.exports = router
